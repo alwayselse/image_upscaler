@@ -1,0 +1,25 @@
+{
+  "name": "image-upscaler-frontend",
+  "version": "1.0.0",
+  "description": "Professional image upscaling frontend application built with React and Tailwind CSS",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 3000",
+    "dev": "python -m http.server 3000",
+    "serve": "python -m http.server 3000"
+  },
+  "keywords": [
+    "image",
+    "upscaling",
+    "react",
+    "tailwind",
+    "frontend",
+    "ai",
+    "enhancement"
+  ],
+  "author": "Image Upscaler Pro Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

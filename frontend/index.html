@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upscaler Pro - Professional Image Enhancement</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React and ReactDOM from CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Babel for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Meta tags for SEO and social sharing -->
+    <meta name="description" content="Professional image upscaling application with AI-powered enhancement. Upload your images and get high-quality upscaled results instantly.">
+    <meta name="keywords" content="image upscaling, AI enhancement, photo enlargement, image quality improvement">
+    <meta name="author" content="Image Upscaler Pro">
+    
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Image Upscaler Pro - Professional Image Enhancement">
+    <meta property="og:description" content="Upload your images and get high-quality upscaled results instantly with our AI-powered enhancement tool.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzM2NTVGRiIvPgo8cGF0aCBkPSJNOSAxMUgxMVYxM0g5VjExWiIgZmlsbD0id2hpdGUiLz4KPHA+dGggZD0iTTEzIDExSDE1VjEzSDEzVjExWiIgZmlsbD0id2hpdGUiLz4KPHA+dGggZD0iTTE3IDExSDE5VjEzSDE3VjExWiIgZmlsbD0id2hpdGUiLz4KPHA+dGggZD0iTTkgMTVIMTFWMTdIOVYxNVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMyAxNUgxNVYxN0gxM1YxNVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNyAxNUgxOVYxN0gxN1YxNVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yMSAxNUgyM1YxN0gyMVYxNVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik05IDE5SDExVjIxSDlWMTlaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTMgMTlIMTVWMjFIMTNWMTlaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTcgMTlIMTlWMjFIMTdWMTlaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjEgMTlIMjNWMjFIMjFWMTlaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K">
+    
+    <!-- Custom styles for enhanced UX -->
+    <style>
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* Custom slider styling */
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3B82F6;
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3B82F6;
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Loading animation */
+        @keyframes pulse-slow {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        /* Smooth transitions for all interactive elements */
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+            transition-duration: 200ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Focus styles for accessibility */
+        button:focus,
+        input:focus,
+        [role="button"]:focus {
+            outline: 2px solid #3B82F6;
+            outline-offset: 2px;
+        }
+        
+        /* Hide file input styling */
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Loading screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p class="text-lg font-medium text-gray-700">Loading Image Upscaler Pro...</p>
+        </div>
+    </div>
+    
+    <!-- React App Container -->
+    <div id="root"></div>
+    
+    <!-- Error Fallback -->
+    <div id="error-fallback" class="hidden fixed inset-0 bg-red-50 flex items-center justify-center z-50">
+        <div class="text-center max-w-md mx-auto p-8">
+            <div class="text-red-500 text-6xl mb-4">⚠️</div>
+            <h1 class="text-2xl font-bold text-red-800 mb-4">Application Error</h1>
+            <p class="text-red-600 mb-6">
+                Sorry, something went wrong while loading the application. Please refresh the page to try again.
+            </p>
+            <button 
+                onclick="window.location.reload()" 
+                class="bg-red-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors"
+            >
+                Refresh Page
+            </button>
+        </div>
+    </div>
+
+    <!-- Load the React component directly -->
+    <script type="text/babel" src="./App.jsx"></script>
+    
+    <script type="text/babel">
+        // Error boundary function
+        class ErrorBoundary extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { hasError: false };
+            }
+
+            static getDerivedStateFromError(error) {
+                return { hasError: true };
+            }
+
+            componentDidCatch(error, errorInfo) {
+                console.error('React Error:', error, errorInfo);
+                // Show error fallback
+                document.getElementById('loading-screen').style.display = 'none';
+                document.getElementById('error-fallback').classList.remove('hidden');
+            }
+
+            render() {
+                if (this.state.hasError) {
+                    return null; // Error fallback is shown via DOM manipulation
+                }
+
+                return this.props.children;
+            }
+        }
+
+        // Load the main App component
+        function loadApp() {
+            try {
+                // Hide loading screen
+                document.getElementById('loading-screen').style.display = 'none';
+                
+                // Render the App (App component is loaded from App.jsx)
+                const root = ReactDOM.createRoot(document.getElementById('root'));
+                root.render(
+                    React.createElement(ErrorBoundary, null,
+                        React.createElement(App, null)
+                    )
+                );
+                
+            } catch (error) {
+                console.error('Failed to load app:', error);
+                document.getElementById('loading-screen').style.display = 'none';
+                document.getElementById('error-fallback').classList.remove('hidden');
+            }
+        }
+
+        // Start the application when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(loadApp, 1000); // Small delay for better UX
+            });
+        } else {
+            setTimeout(loadApp, 1000);
+        }
+    </script>
+
+    <!-- Analytics and monitoring (placeholder for production) -->
+    <script>
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            const loadTime = performance.now();
+            console.log(`App loaded in ${Math.round(loadTime)}ms`);
+            
+            // You can send this to your analytics service
+            // analytics.track('app_loaded', { loadTime });
+        });
+
+        // Error tracking
+        window.addEventListener('error', (e) => {
+            console.error('Global error:', e.error);
+            // You can send this to your error tracking service
+            // errorTracker.captureException(e.error);
+        });
+
+        // Unhandled promise rejection tracking
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('Unhandled promise rejection:', e.reason);
+            // You can send this to your error tracking service
+            // errorTracker.captureException(e.reason);
+        });
+    </script>
+</body>
+</html>

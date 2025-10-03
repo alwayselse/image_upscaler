@@ -1,0 +1,21 @@
+# Image Upscaling API - Backend Dependencies
+# =========================================
+# 
+# Production-ready image upscaling service dependencies
+# All versions pinned for security and reproducibility
+# 
+# Installation: pip install -r requirements.txt
+# Python version: 3.8+
+
+# Core FastAPI framework with security updates
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Image processing library with latest security patches
+Pillow==10.0.1
+
+# HTTP multipart form handling
+python-multipart==0.0.6
+
+# Production deployment (uncomment for production)
+# gunicorn==21.2.0

@@ -521,6 +521,8 @@ If you encounter any issues or have questions:
 
 ---
 
-**Happy upscaling! 🎉**#   i m a g e _ u p s c a l e r  
- #   i m a g e _ u p s c a l e r  
+**Happy upscaling! 🎉**#   i m a g e _ u p s c a l e r 
+ 
+ #   i m a g e _ u p s c a l e r 
+ 
  
